@@ -151,7 +151,7 @@
         .main-title::before {
             content: '💖';
             position: absolute;
-            left: -80px;
+            left: 10px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 3rem;
@@ -161,7 +161,7 @@
         .main-title::after {
             content: '💖';
             position: absolute;
-            right: -80px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 3rem;
@@ -530,7 +530,7 @@
             </div>
             
             <button class="start-button" onclick="startReasons()">
-                ✨ Comenzar el Viaje de Amor ✨
+                ✨ Comenzar con las 101 razones ✨
             </button>
         </div>
 
@@ -575,16 +575,108 @@
     <script>
         // AQUÍ AGREGAS TUS 101 RAZONES
         const reasons = [
-            "Aquí va tu primera razón para amar a tu pareja...",
-            "Aquí va tu segunda razón para amar a tu pareja...",
-            "Aquí va tu tercera razón para amar a tu pareja...",
-            // CONTINÚA AGREGANDO HASTA LLEGAR A 101 RAZONES
-            // Ejemplo de cómo agregar más:
-            // "Porque tu sonrisa ilumina mis días más oscuros",
-            // "Porque me haces sentir como la persona más especial del mundo",
-            // "Porque tu abrazo es mi lugar favorito en el universo",
-            // ... y así hasta 101
-            "Aquí va tu razón número 101... ¡La más especial de todas!"
+            "Porque con usted todo me parece mas facil.",
+            "Porque incluso en mis peores dias, me quieres.",
+            "Porque me hace sentir en casa, aunque estemos lejos.",
+            "Porque con usted tengo el anhelo de formar una familia",
+            "Porque es autentica.",
+            "Porque me motiva a ser mejor hombre",
+            "Porque me da paz",
+            "Porque incluso en mis peores dias, me quieres.",
+            "Porque es una mujer que aspira el exito.",
+            "Porque hace que las cosas simples sean especiales",
+            "Porque me quieres mucho mucho mucho, mucho de bastante.",
+            "Porque tiene un bonito corazon",
+            "Porque ama a los animales",
+            "Porque su corazon me pide que lo cuide",
+            "Porque lo nuestro es real",
+            "Porque me nace hacerlo",
+            "Porque quiero que sea mi compañera de aventuras",
+            "Porque con usted me rio tanto que me duelen los cachetes",
+            "Porque su ternura me derrite",
+            "Porque es paciente conmigo",
+            "Porque cada dia aprendo del amor, por ti",
+            "Porque admiro su fuerza",
+            "Porque admiro su forma de ver la vida",
+            "Porque sus ocurrencias me alegran los dias",
+            "Porque me hace que quiera correr a contarle todo",
+            "Porque me hace sentir afortunado",
+            "Porque me da seguridad",
+            "Porque quiero",
+            "Porque no necesito una razon",
+            "Porque es mi mejor amiga",
+            "Porque es mi amor",
+            "Porque me encanta su voz",
+            "Porque contigo el tiempo vuela",
+            "Porque contigo quiero envejecer",
+            "Porque siempre quiero cuidar de usted",
+            "Porque con usted soy yo",
+            "Porque con conmigo eres tu",
+            "Porque me hace sentir unico",
+            "Porque eres mi lugar seguro",
+            "Porque me hace sentir orgulloso de usted",
+            "Porque con usted estoy aprendiendo que es el amor",
+            "Porque su alegria se contagia",
+            "Porque entiende mis rarezas",
+            "Porque eres como yo",
+            "Porque soy como tu",
+            "Porque ambos somos nosotros cuando estamos juntos",
+            "Porque hasta tus enojos son tiernos",
+            "Porque no me imagino la vida si  ti",
+            "Porque eres unica en el mundo",
+            "Porque sus sueños tambien se vuelven mios <3",
+            "Porque eres valiente",
+            "Porque eres sensible",
+            "Porque sus errores la hacen ser mas hermosa",
+            "Porque sus defectos me hacen querer abrazarlos",
+            "Porque sus inseguridades me piden muchos besos",
+            "Porque eres mi persona favorita",
+            "Porque tienes un corazon enorme",
+            "Porque todas las canciones de amor me suenan a ti",
+            "Porque eres magica",
+            "Porque contigo siento que todo es posible",
+            "Porque ahora quiero 5 hijos",
+            "Porque ahora quiero comprarme una casa",
+            "Porque contigo me nace querer ver todas las peliculas de amor que existen",
+            "Porque me acompañas en todo",
+            "Porque compartimos sueños",
+            "Porque eres mi inspiracion",
+            "Porque me haces creer en el destino",
+            "Porque su alma conecto con la mia",
+            "Porque lo nuestro es unico",
+            "Porque todas las canciones de Manuel Medrano tienen su nombre",
+            "Porque eres mi mejor regalo",
+            "Porque a su lado todo tiene sentido",
+            "Porque contigo soy feliz",
+            "Porque me haces amar el amor",
+            "Porque me encanta cuando se pone celosa",
+            "Porque cuando me habla de sus sueños veo a alguien valiente que los cumplira",
+            "Porque me gusta como planea nuestro futuro",
+            "Porque sus mensajes me alegran el dia",
+            "Porque su forma de ser brilla como el sol",
+            "Porque eres mi mayor bendicion",
+            "Porque me inspiras a luchar por lo que quiero",
+            "Porque eres la mejor parte de mis dias",
+            "Porque eres mi primer mensaje al abrir los ojos en las mañanas",
+            "Porque eres mi ultimo mensaje antes de cerrar los ojos en las noches",
+            "Porque encuentro belleza incluso en esas cosas que crees que tienes extrañas",
+            "Porque eres mi mejor casualidad",
+            "Porque amo la forma en que me necesitas",
+            "Porque dormir con usted en llamada me da paz",
+            "Porque nunca me aburro de hablar horas contigo",
+            "Porque hace que cada dia tenga sentido",
+            "Porque si mi vida es una historia, eres la mejor parte de ella",
+            "Porque si mi vida es un libro, el dia que apareciste tiene la esquinita de la hoja doblada",
+            "Porque cuando no estas, te extraño",
+            "Porque seremos buenos padres",
+            "Porque me haces querer agradecerle a Dios por darte la vida",
+            "Porque estoy orgulloso de ti",
+            "Porque te quiero conmigo",
+            "Porque si no es contigo, no es con nadie mas",
+            "Porque te elijo",
+            "Porque quiero que cumplamos cada plan que hacemos para el futuro",
+            "Porque te amo",
+            "Porque pude decir 100 razones sin mencionar su cuerpo"
         ];
 
         let currentReason = 0;
