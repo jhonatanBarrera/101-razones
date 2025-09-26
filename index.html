@@ -67,11 +67,11 @@
         }
 
         .heart:nth-child(odd) {
-            color: rgba(255, 20, 147, 0.7);
+            color: rgba(255, 182, 193, 0.7);
         }
 
         .heart:nth-child(3n) {
-            color: rgba(220, 20, 60, 0.6);
+            color: rgba(255, 20, 147, 0.6);
             font-size: 22px;
         }
 
@@ -111,13 +111,12 @@
         }
 
         .romantic-frame::before {
-            content: '♥';
+            content: '💕';
             position: absolute;
             top: -20px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 2rem;
-            color: #ff1493;
             background: rgba(255, 192, 203, 0.9);
             padding: 10px 20px;
             border-radius: 25px;
@@ -125,13 +124,12 @@
         }
 
         .romantic-frame::after {
-            content: '✦';
+            content: '✨';
             position: absolute;
             bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 2rem;
-            color: #ff1493;
             background: rgba(255, 192, 203, 0.9);
             padding: 10px 20px;
             border-radius: 25px;
@@ -151,25 +149,23 @@
         }
 
         .main-title::before {
-            content: '♥';
+            content: '💖';
             position: absolute;
             left: -80px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 3rem;
             animation: bounce 2s infinite;
-            color: #ff1493;
         }
 
         .main-title::after {
-            content: '♥';
+            content: '💖';
             position: absolute;
             right: -80px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 3rem;
             animation: bounce 2s infinite 0.5s;
-            color: #ff1493;
         }
 
         @keyframes glow {
@@ -230,14 +226,14 @@
             to { transform: rotate(360deg); }
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .birthday-message > * {
             position: relative;
             z-index: 1;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .birthday-text {
@@ -344,13 +340,12 @@
         }
 
         .reason-card::after {
-            content: '♥';
+            content: '💕';
             position: absolute;
             top: 20px;
             right: 30px;
             font-size: 2rem;
-            color: #ff69b4;
-            opacity: 0.4;
+            opacity: 0.3;
             animation: heartPulse 2s infinite;
         }
 
@@ -427,6 +422,26 @@
             border-radius: 10px;
             transition: width 0.5s ease;
             box-shadow: 0 2px 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .special-effects {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .celebration {
+            font-size: 3rem;
+            animation: celebrate 1s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1) rotate(360deg); opacity: 0; }
         }
 
         .final-message {
@@ -507,15 +522,15 @@
     <div class="container">
         <div id="welcome-screen">
             <h1 class="main-title">101 Razones</h1>
-            <p class="subtitle">para amarte cada día más ✦</p>
+            <p class="subtitle">para amarte cada día más ✨</p>
             
             <div class="birthday-message">
-                <div class="birthday-text">¡Feliz Cumpleaños, mi amor! ♥</div>
+                <div class="birthday-text">¡Feliz Cumpleaños, mi amor! 🎉</div>
                 <p>Hoy es tu día especial, y quiero recordarte todas las razones por las que eres la persona más importante de mi vida. Cada razón es un pedacito de mi corazón que te pertenece.</p>
             </div>
             
-            <button class="start-button" id="btnComenzar">
-                ✦ Comenzar el Viaje de Amor ✦
+            <button class="start-button" onclick="startReasons()">
+                ✨ Comenzar el Viaje de Amor ✨
             </button>
         </div>
 
@@ -528,258 +543,186 @@
             
             <div class="reason-card">
                 <div class="reason-text" id="reason-text">
+                    <!-- AQUÍ AGREGAS LA PRIMERA RAZÓN -->
                     Aquí va tu primera razón para amar a tu pareja...
                 </div>
             </div>
             
             <div class="navigation">
-                <button class="nav-button" id="prev-btn" disabled>
+                <button class="nav-button" id="prev-btn" onclick="prevReason()" disabled>
                     ← Anterior
                 </button>
-                <button class="nav-button" id="next-btn">
+                <button class="nav-button" id="next-btn" onclick="nextReason()">
                     Siguiente →
                 </button>
             </div>
         </div>
 
         <div class="final-message" id="final-message">
-            <div class="final-title">¡101 razones completadas! ♥</div>
+            <div class="final-title">¡101 razones completadas! 💕</div>
             <div class="final-text">
                 Y estas son solo algunas de las infinitas razones por las que te amo. Cada día contigo es una nueva razón para sonreír, para crecer, para ser mejor persona. 
                 <br><br>
-                ¡Feliz cumpleaños, amor de mi vida! ✦
+                ¡Feliz cumpleaños, amor de mi vida! 🎂✨
                 <br><br>
-                Con todo mi amor, siempre y para siempre ♥
+                Con todo mi amor, siempre y para siempre ❤️
             </div>
         </div>
     </div>
 
+    <div class="special-effects" id="special-effects"></div>
+
     <script>
-        // AQUÍ AGREGAS TUS 101 RAZONES - CAMBIA ESTOS TEXTOS POR TUS RAZONES REALES
-        var razones = [
+        // AQUÍ AGREGAS TUS 101 RAZONES
+        const reasons = [
             "Aquí va tu primera razón para amar a tu pareja...",
             "Aquí va tu segunda razón para amar a tu pareja...",
             "Aquí va tu tercera razón para amar a tu pareja...",
-            "Aquí va tu cuarta razón para amar a tu pareja...",
-            "Aquí va tu quinta razón para amar a tu pareja...",
             // CONTINÚA AGREGANDO HASTA LLEGAR A 101 RAZONES
-            // Ejemplos de razones románticas:
+            // Ejemplo de cómo agregar más:
             // "Porque tu sonrisa ilumina mis días más oscuros",
             // "Porque me haces sentir como la persona más especial del mundo",
             // "Porque tu abrazo es mi lugar favorito en el universo",
-            // "Porque tus ojos tienen la magia de calmar todas mis tormentas",
-            // "Porque contigo he descubierto lo que significa el amor verdadero",
-            // ... y así hasta completar las 101
+            // ... y así hasta 101
             "Aquí va tu razón número 101... ¡La más especial de todas!"
         ];
 
-        var razonActual = 0;
+        let currentReason = 0;
 
-        function comenzarViaje() {
-            var welcomeScreen = document.getElementById('welcome-screen');
-            var reasonsContainer = document.getElementById('reasons-container');
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartEmojis = ['💕', '❤️', '💖', '💗', '💝', '💘', '💞', '💓'];
             
-            if (welcomeScreen) welcomeScreen.style.display = 'none';
-            if (reasonsContainer) reasonsContainer.style.display = 'block';
-            
-            actualizarPantalla();
-        }
-
-        function actualizarPantalla() {
-            var counter = document.getElementById('counter');
-            var reasonText = document.getElementById('reason-text');
-            var progress = document.getElementById('progress');
-            var prevBtn = document.getElementById('prev-btn');
-            var nextBtn = document.getElementById('next-btn');
-
-            if (counter) counter.innerHTML = (razonActual + 1) + ' / 101';
-            if (reasonText) reasonText.innerHTML = razones[razonActual] || 'Razón ' + (razonActual + 1) + ': Agrega aquí tu razón...';
-            
-            var porcentajeProgreso = ((razonActual + 1) / 101) * 100;
-            if (progress) progress.style.width = porcentajeProgreso + '%';
-
-            if (prevBtn) prevBtn.disabled = razonActual === 0;
-            
-            if (nextBtn) {
-                if (razonActual === 100) {
-                    nextBtn.innerHTML = '¡Finalizar! ♥';
-                } else {
-                    nextBtn.innerHTML = 'Siguiente →';
-                }
-            }
-        }
-
-        function siguienteRazon() {
-            if (razonActual < 100) {
-                razonActual++;
-                actualizarPantalla();
-            } else {
-                var reasonsContainer = document.getElementById('reasons-container');
-                var finalMessage = document.getElementById('final-message');
-                
-                if (reasonsContainer) reasonsContainer.style.display = 'none';
-                if (finalMessage) finalMessage.style.display = 'block';
-                
-                crearConfeti();
-            }
-        }
-
-        function razonAnterior() {
-            if (razonActual > 0) {
-                razonActual--;
-                actualizarPantalla();
-            }
-        }
-
-        function crearCorazones() {
-            var contenedorCorazones = document.getElementById('hearts');
-            if (!contenedorCorazones) return;
-            
-            var tiposCorazones = ['♥', '♡', '❤'];
-            
-            function nuevoCorazon() {
-                var corazon = document.createElement('div');
-                corazon.className = 'heart';
-                corazon.innerHTML = tiposCorazones[Math.floor(Math.random() * tiposCorazones.length)];
-                corazon.style.left = Math.random() * 100 + 'vw';
-                corazon.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                corazon.style.fontSize = (Math.random() * 15 + 20) + 'px';
-                contenedorCorazones.appendChild(corazon);
-                
-                setTimeout(function() {
-                    if (corazon.parentNode) {
-                        corazon.parentNode.removeChild(corazon);
-                    }
-                }, 10000);
-            }
-            
-            for (var i = 0; i < 5; i++) {
-                setTimeout(nuevoCorazon, i * 500);
-            }
-            
-            setInterval(function() {
+            setInterval(() => {
                 if (Math.random() > 0.6) {
-                    nuevoCorazon();
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 10000);
                 }
-            }, 1500);
+            }, 400);
         }
 
-        function crearConfeti() {
-            var coloresConfeti = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff'];
-            var contenedorConfeti = document.getElementById('hearts');
-            if (!contenedorConfeti) return;
+        function startReasons() {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('reasons-container').style.display = 'block';
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const counter = document.getElementById('counter');
+            const reasonText = document.getElementById('reason-text');
+            const progress = document.getElementById('progress');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            counter.textContent = `${currentReason + 1} / 101`;
+            reasonText.textContent = reasons[currentReason] || `Razón ${currentReason + 1}: Agrega aquí tu razón...`;
             
-            for (var i = 0; i < 30; i++) {
-                setTimeout(function() {
-                    var confeti = document.createElement('div');
-                    confeti.style.position = 'absolute';
-                    confeti.style.left = Math.random() * 100 + 'vw';
-                    confeti.style.top = '-10px';
-                    confeti.style.width = '8px';
-                    confeti.style.height = '8px';
-                    confeti.style.backgroundColor = coloresConfeti[Math.floor(Math.random() * coloresConfeti.length)];
-                    confeti.style.animation = 'float ' + (Math.random() * 2 + 3) + 's linear forwards';
-                    contenedorConfeti.appendChild(confeti);
+            const progressPercent = ((currentReason + 1) / 101) * 100;
+            progress.style.width = progressPercent + '%';
+
+            prevBtn.disabled = currentReason === 0;
+            
+            if (currentReason === 100) {
+                nextBtn.textContent = '¡Finalizar! 💕';
+            } else {
+                nextBtn.textContent = 'Siguiente →';
+            }
+        }
+
+        function nextReason() {
+            if (currentReason < 100) {
+                currentReason++;
+                updateDisplay();
+            } else {
+                // Mostrar mensaje final
+                document.getElementById('reasons-container').style.display = 'none';
+                document.getElementById('final-message').style.display = 'block';
+                showSpecialEffect('🎊');
+                createConfetti();
+            }
+        }
+
+        function prevReason() {
+            if (currentReason > 0) {
+                currentReason--;
+                updateDisplay();
+            }
+        }
+
+        function showSpecialEffect(emoji) {
+            const effectsContainer = document.getElementById('special-effects');
+            const effect = document.createElement('div');
+            effect.className = 'celebration';
+            effect.textContent = emoji;
+            effectsContainer.appendChild(effect);
+            
+            // Crear múltiples efectos románticos
+            const romanticEmojis = [''];
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const extraEffect = document.createElement('div');
+                    extraEffect.className = 'celebration';
+                    extraEffect.style.left = (Math.random() - 0.5) * 200 + 'px';
+                    extraEffect.style.top = (Math.random() - 0.5) * 200 + 'px';
+                    extraEffect.textContent = romanticEmojis[Math.floor(Math.random() * romanticEmojis.length)];
+                    effectsContainer.appendChild(extraEffect);
                     
-                    setTimeout(function() {
-                        if (confeti.parentNode) {
-                            confeti.parentNode.removeChild(confeti);
-                        }
+                    setTimeout(() => {
+                        extraEffect.remove();
+                    }, 1000);
+                }, i * 200);
+            }
+            
+            setTimeout(() => {
+                effect.remove();
+            }, 1000);
+        }
+
+        function createConfetti() {
+            const confettiColors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff'];
+            const confettiContainer = document.getElementById('hearts');
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                    confetti.style.animation = `float ${Math.random() * 2 + 3}s linear forwards`;
+                    confettiContainer.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
                     }, 5000);
                 }, i * 100);
             }
         }
 
-        // Función específica para iOS Safari desde WhatsApp
-        function habilitarTouch() {
-            document.addEventListener('touchstart', function() {}, false);
-            document.addEventListener('touchmove', function() {}, false);
-            document.addEventListener('touchend', function() {}, false);
-        }
-
-        // Función para configurar eventos de manera muy agresiva para iOS
-        function configurarEventos() {
-            var btnComenzar = document.getElementById('btnComenzar');
-            var prevBtn = document.getElementById('prev-btn');
-            var nextBtn = document.getElementById('next-btn');
-
-            // Eventos para botón principal - múltiples métodos
-            if (btnComenzar) {
-                btnComenzar.onclick = comenzarViaje;
-                btnComenzar.addEventListener('click', comenzarViaje, false);
-                btnComenzar.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    setTimeout(comenzarViaje, 100);
-                }, false);
-                btnComenzar.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    comenzarViaje();
-                }, false);
-                
-                // Para dispositivos táctiles
-                btnComenzar.addEventListener('pointerdown', comenzarViaje, false);
-            }
-
-            // Eventos para navegación
-            if (prevBtn) {
-                prevBtn.onclick = razonAnterior;
-                prevBtn.addEventListener('click', razonAnterior, false);
-                prevBtn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    razonAnterior();
-                }, false);
-            }
-            
-            if (nextBtn) {
-                nextBtn.onclick = siguienteRazon;
-                nextBtn.addEventListener('click', siguienteRazon, false);
-                nextBtn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    siguienteRazon();
-                }, false);
-            }
-
-            // Navegación con teclado
-            document.addEventListener('keydown', function(e) {
-                var reasonsContainer = document.getElementById('reasons-container');
-                if (reasonsContainer && reasonsContainer.style.display === 'block') {
-                    if (e.keyCode === 39 && razonActual < 100) {
-                        siguienteRazon();
-                    } else if (e.keyCode === 37 && razonActual > 0) {
-                        razonAnterior();
-                    }
-                }
-            }, false);
-        }
-
-        // Inicializar de forma muy agresiva para iOS
-        function inicializar() {
-            habilitarTouch();
-            configurarEventos();
-            setTimeout(crearCorazones, 500);
-        }
-
-        // Detectar y configurar de múltiples formas
-        habilitarTouch();
+        // Inicializar efectos
+        createFloatingHearts();
         
-        if (document.readyState === 'complete') {
-            inicializar();
-        } else if (document.readyState === 'interactive') {
-            setTimeout(inicializar, 100);
-        } else {
-            document.addEventListener('DOMContentLoaded', inicializar, false);
-        }
-
-        // Fallbacks adicionales
-        window.addEventListener('load', function() {
-            setTimeout(inicializar, 500);
-        }, false);
-
-        // Fallback final después de 2 segundos
-        setTimeout(function() {
-            habilitarTouch();
-            configurarEventos();
-        }, 2000);
+        // Agregar algunos efectos de teclado para navegación
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('reasons-container').style.display === 'block') {
+                if (e.key === 'ArrowRight' && currentReason < 100) {
+                    nextReason();
+                } else if (e.key === 'ArrowLeft' && currentReason > 0) {
+                    prevReason();
+                }
+            }
+        });
     </script>
 </body>
 </html>
